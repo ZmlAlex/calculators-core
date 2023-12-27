@@ -8,7 +8,7 @@ type HTTPClient<T> = {
 export const axiosClient = axios.create({
   baseURL: 'https://exchangerate-api.p.rapidapi.com/rapid/latest',
   headers: {
-    // TODO: move it to the env file
+    //*  it's not sensetive, it's fine to keep it here
     'X-RapidAPI-Key': 'df03474a0fmsh3a1ab67b761bdf7p1b2599jsn52d46c32554d',
     'X-RapidAPI-Host': 'exchangerate-api.p.rapidapi.com',
   },
