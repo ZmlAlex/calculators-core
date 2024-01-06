@@ -17,9 +17,9 @@ export const getExciseTax = ({ horsePower, subjectType, engineType }: ExciseTaxP
     { horsePowerLimit: 150, pricePerHorsePower: 55 },
     { horsePowerLimit: 200, pricePerHorsePower: 531 },
     { horsePowerLimit: 300, pricePerHorsePower: 869 },
-    { horsePowerLimit: 400, pricePerHorsePower: 1482 },
-    { horsePowerLimit: 500, pricePerHorsePower: 1523 },
-    { horsePowerLimit: Infinity, pricePerHorsePower: 1584 },
+    { horsePowerLimit: 400, pricePerHorsePower: 1_482 },
+    { horsePowerLimit: 500, pricePerHorsePower: 1_523 },
+    { horsePowerLimit: Infinity, pricePerHorsePower: 1_584 },
   ];
 
   // Determine price per horsepower based on horsePower

@@ -16,16 +16,16 @@ vi.mock('./getVat');
 describe('getFinalCustomsValues', () => {
   it('correctly calculates total customs values', async () => {
     vi.mocked(getCarPrices).mockResolvedValue({ EUR: 20_000, RUB: 2_000_000 });
-    vi.mocked(getCustomsClearanceFee).mockReturnValue(8530);
+    vi.mocked(getCustomsClearanceFee).mockReturnValue(8_530);
     vi.mocked(getCustomsDuty).mockReturnValue({
       customsDuty: 1_100_000,
       coefficient: 0.48,
       pricePerCubicCentimeter: 5.5,
     });
     vi.mocked(getUtilizationFee).mockReturnValue({
-      utilizationFee: 3400,
+      utilizationFee: 3_400,
       coefficient: 0.17,
-      baseRate: 20000,
+      baseRate: 20_000,
     });
     vi.mocked(getExciseTax).mockReturnValue({ exciseTax: 0, pricePerHorsePower: 0 });
     vi.mocked(getVat).mockReturnValue({ vat: 0, coefficient: 0.0 });
@@ -37,7 +37,7 @@ describe('getFinalCustomsValues', () => {
     const result = await getFinalCustomsValues({
       carPrice: 2_000_000,
       currency: 'RUB',
-      engineCapacityCubicCentimeters: 2000,
+      engineCapacityCubicCentimeters: 2_000,
       horsePower: 150,
       carAge: '0-3',
       subjectType: 'individual',

@@ -1,7 +1,7 @@
 import { getUtilizationFee } from './getUtilizationFee';
 import type { CarAge, EngineType } from 'src/vehicleCustomsDutyCalculator/types';
 
-const BASE_RATE = 20000;
+const BASE_RATE = 20_000;
 // 3.
 describe('getUtilizationFee', () => {
   // 3.1
@@ -22,35 +22,35 @@ describe('getUtilizationFee', () => {
         expectedUtilizationFee: Number((BASE_RATE * 0.26).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 1000,
+        engineCapacityCubicCentimeters: 1_000,
         carAge: '0-3',
         engineType: 'petrol',
         coefficient: 0.17,
         expectedUtilizationFee: Number((BASE_RATE * 0.17).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 1500,
+        engineCapacityCubicCentimeters: 1_500,
         carAge: '3-5',
         engineType: 'petrol',
         coefficient: 0.26,
         expectedUtilizationFee: Number((BASE_RATE * 0.26).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 3000,
+        engineCapacityCubicCentimeters: 3_000,
         carAge: '0-3',
         engineType: 'petrol',
         coefficient: 0.17,
         expectedUtilizationFee: Number((BASE_RATE * 0.17).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 3500,
+        engineCapacityCubicCentimeters: 3_500,
         carAge: '3-5',
         engineType: 'petrol',
         coefficient: 74.25,
         expectedUtilizationFee: Number((BASE_RATE * 74.25).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 4000,
+        engineCapacityCubicCentimeters: 4_000,
         carAge: '5-7',
         engineType: 'petrol',
         coefficient: 81.19,
@@ -63,8 +63,8 @@ describe('getUtilizationFee', () => {
         expect(
           getUtilizationFee({
             engineCapacityCubicCentimeters,
-            carAge: carAge as CarAge,
             subjectType: 'individual',
+            carAge: carAge as CarAge,
             engineType: engineType as EngineType,
           })
         ).toEqual({
@@ -86,35 +86,35 @@ describe('getUtilizationFee', () => {
         expectedUtilizationFee: Number((BASE_RATE * 4.06).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 1000,
+        engineCapacityCubicCentimeters: 1_000,
         carAge: '0-3',
         engineType: 'petrol',
         coefficient: 4.06,
         expectedUtilizationFee: Number((BASE_RATE * 4.06).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 2000,
+        engineCapacityCubicCentimeters: 2_000,
         carAge: '3-5',
         engineType: 'petrol',
         coefficient: 26.44,
         expectedUtilizationFee: Number((BASE_RATE * 26.44).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 3000,
+        engineCapacityCubicCentimeters: 3_000,
         carAge: '3-5',
         engineType: 'petrol',
         coefficient: 63.95,
         expectedUtilizationFee: Number((BASE_RATE * 63.95).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 3500,
+        engineCapacityCubicCentimeters: 3_500,
         carAge: '0-3',
         engineType: 'petrol',
         coefficient: 48.5,
         expectedUtilizationFee: Number((BASE_RATE * 48.5).toFixed(1)),
       },
       {
-        engineCapacityCubicCentimeters: 4000,
+        engineCapacityCubicCentimeters: 4_000,
         carAge: '5-7',
         engineType: 'petrol',
         coefficient: 81.19,

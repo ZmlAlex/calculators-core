@@ -66,23 +66,23 @@ const calculateCustomsDutyIndividualLessThan3Years = ({
 }: Pick<CustomsDutyParams, 'carPriceEur' | 'engineCapacityCubicCentimeters'>) => {
   const { coefficient, pricePerCubicCentimeter } = match(carPriceEur)
     .with(
-      P.when((price) => price <= 8500),
+      P.when((price) => price <= 8_500),
       () => ({ coefficient: 0.54, pricePerCubicCentimeter: 2.5 })
     )
     .with(
-      P.when((price) => price <= 16700),
+      P.when((price) => price <= 16_700),
       () => ({ coefficient: 0.48, pricePerCubicCentimeter: 3.5 })
     )
     .with(
-      P.when((price) => price <= 42300),
+      P.when((price) => price <= 42_300),
       () => ({ coefficient: 0.48, pricePerCubicCentimeter: 5.5 })
     )
     .with(
-      P.when((price) => price <= 84500),
+      P.when((price) => price <= 84_500),
       () => ({ coefficient: 0.48, pricePerCubicCentimeter: 7.5 })
     )
     .with(
-      P.when((price) => price <= 169000),
+      P.when((price) => price <= 169_000),
       () => ({ coefficient: 0.48, pricePerCubicCentimeter: 15 })
     )
     .otherwise(() => ({ coefficient: 0.48, pricePerCubicCentimeter: 20 }));
@@ -105,23 +105,23 @@ function calculateCustomsDutyIndividualOlderThan3Years({
 
   const pricePerCubicCentimeter = match(engineCapacityCubicCentimeters)
     .with(
-      P.when((capacity) => capacity <= 1000),
+      P.when((capacity) => capacity <= 1_000),
       () => (isOlderThan5Years ? 3 : 1.5)
     )
     .with(
-      P.when((capacity) => capacity <= 1500),
+      P.when((capacity) => capacity <= 1_500),
       () => (isOlderThan5Years ? 3.2 : 1.7)
     )
     .with(
-      P.when((capacity) => capacity <= 1800),
+      P.when((capacity) => capacity <= 1_800),
       () => (isOlderThan5Years ? 3.5 : 2.5)
     )
     .with(
-      P.when((capacity) => capacity <= 2300),
+      P.when((capacity) => capacity <= 2_300),
       () => (isOlderThan5Years ? 4.8 : 2.7)
     )
     .with(
-      P.when((capacity) => capacity <= 3000),
+      P.when((capacity) => capacity <= 3_000),
       () => (isOlderThan5Years ? 5 : 3)
     )
     .otherwise(() => (isOlderThan5Years ? 5.7 : 3.6));
@@ -148,17 +148,17 @@ function calculateCustomsDutyLegalEntityPetrol({
     .otherwise(() => 0.2);
 
   const pricePerCubicCentimeter = match({ isOlderThan7Years, engineCapacityCubicCentimeters })
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1000) }, () => 1.4)
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1500) }, () => 1.5)
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1800) }, () => 1.6)
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2300) }, () => 2.2)
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 3000) }, () => 2.2)
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_000) }, () => 1.4)
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_500) }, () => 1.5)
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_800) }, () => 1.6)
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2_300) }, () => 2.2)
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 3_000) }, () => 2.2)
     .with({ isOlderThan7Years: true }, () => 3.2)
-    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1000) }, () => 0.36)
-    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1500) }, () => 0.4)
-    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1800) }, () => 0.36)
-    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2300) }, () => 0.44)
-    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 3000) }, () => 0.44)
+    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_000) }, () => 0.36)
+    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_500) }, () => 0.4)
+    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_800) }, () => 0.36)
+    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2_300) }, () => 0.44)
+    .with({ engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 3_000) }, () => 0.44)
     .otherwise(() => 0.8);
 
   const duty = engineCapacityCubicCentimeters * pricePerCubicCentimeter;
@@ -186,11 +186,11 @@ function calculateCustomsDutyLegalEntityDiesel({
     .with({ isLessThan3Years: true }, () => ({
       customsDuty: engineCapacityCubicCentimeters * coefficient,
     }))
-    .with({ isBetween3And7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1500) }, () => ({
+    .with({ isBetween3And7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_500) }, () => ({
       customsDuty: Math.max(engineCapacityCubicCentimeters * coefficient, engineCapacityCubicCentimeters * 0.32),
       pricePerCubicCentimeter: 0.32,
     }))
-    .with({ isBetween3And7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2500) }, () => ({
+    .with({ isBetween3And7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2_500) }, () => ({
       customsDuty: Math.max(engineCapacityCubicCentimeters * coefficient, engineCapacityCubicCentimeters * 0.4),
       pricePerCubicCentimeter: 0.4,
     }))
@@ -198,11 +198,11 @@ function calculateCustomsDutyLegalEntityDiesel({
       customsDuty: Math.max(engineCapacityCubicCentimeters * coefficient, engineCapacityCubicCentimeters * 0.8),
       pricePerCubicCentimeter: 0.8,
     }))
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1500) }, () => ({
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 1_500) }, () => ({
       customsDuty: engineCapacityCubicCentimeters * 1.5,
       pricePerCubicCentimeter: 1.5,
     }))
-    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2500) }, () => ({
+    .with({ isOlderThan7Years: true, engineCapacityCubicCentimeters: P.when((capacity) => capacity <= 2_500) }, () => ({
       customsDuty: engineCapacityCubicCentimeters * 2.2,
       pricePerCubicCentimeter: 2.2,
     }))
